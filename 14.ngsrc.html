@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body ng-app="app" ng-controller="mycontroller">
+    <a ng-href="{{bdsrc}}">百度</a>
+    <img ng-src="{{bdimg}}" alt="">
+    <script src="../angular-1.5.8/angular.js"></script>
+    <script>
+        var app = angular.module('app', []);
+        app.controller('mycontroller', function($scope) {
+            $scope.bdsrc = 'http://www.baidu.com';
+            $scope.bdimg = 'http://img002.21cnimg.com/photos/album/20150702/m600/2D79154370E073A2BA3CD4D07868861D.jpeg';
+        })
+    </script>
+</body>
+
+</html>

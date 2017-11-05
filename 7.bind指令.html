@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<!-- 3绑定 app 和controller -->
+
+<body ng-app="app" ng-controller="mycontroller">
+    <p>{{text}}</p>
+    <p>{{testHtml}}</p>
+    <input type="text" ng-model="text">
+    <!--ng-bin： bind指令用来绑定数据，类似innerText
+        ng-bin-html：bind指令用来绑定数据类似innerHTML
+        ng-model: 绑定标签中的value属性
+    -->
+    <!-- 如果在一边的情况下是不允许使用将后台数据直接翻译成html，js代码
+    如果需要使用ng-bind-html 需要步骤
+      1.引用angular-sanitize.js处理安全问题
+      2.在当前模块的后面数字中添加对应的模块‘ngSanitize’
+      3.通过ng-bind-html使用不安全的html代码 -->
+    <h1 ng-bind="text"></h1>
+    <h2>{{::text}}</h2>
+    <div ng-bind-html="text"></div>
+    <!-- 1引用angular -->
+    <script src="../angular-1.5.8/angular.js"></script>
+    <script src="../angular-1.5.8/angular-sanitize.js"></script>
+    <script>
+        // 2.创建模块 和控制器
+        // app是当前模块名，ngSanitize当前模块所需要其他的模块
+        var app = angular.module('app', ["ngSanitize"]);
+        app.controller('mycontroller', function($scope) {
+            $scope.text = '二狗'
+            $scope.testHtml = '<h1>测试html</h1>'
+        })
+    </script>
+</body>
+
+</html>

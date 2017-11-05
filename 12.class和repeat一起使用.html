@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .orange {
+            background-color: orange;
+        }
+        
+        .red {
+            background-color: red;
+        }
+    </style>
+</head>
+
+<body ng-app="app" ng-controller="mycontroller">
+    <!--
+             repeat指令重复出现当前标签 
+             1.注意事项 如果你的ng-repeat出现 track by 是angular无法分辨相同数据
+             2. 
+             $index 是其序号  number
+             $first 首个元素  bool
+             $last 最后一个元素 bool
+             $middle  中间的元素 bool
+             $even 偶数 bool
+             $odd 奇数 bool
+         -->
+    <input type="checkbox" ng-model="isCange">
+    <p ng-repeat="item in arr track by $index" ng-class="{orange:$even,red:$odd}">
+        <!-- 通过ng-class-even/odd 变色 -->
+        <!-- <p ng-repeat="item in arr track by $index " ng-class-even="{red:false}" ng-class-odd="{orange:true}"> -->
+        <!-- 奇偶变色 $even $odd -->
+        <!-- <p ng-repeat="item in arr track by $index " ng-class="{red:$even==isChange,orange:$odd}"> -->
+
+        {{'$index___'}}{{$index}},,,{{'$first__'}}{{$first}} ,,,{{'$last___'}}{{$last}} ,,,{{'$middle___'}}{{$middle}} ,,,{{'$even___'}}{{$even}} ,,,{{'$odd___'}}{{$odd}} ,,,{{'value___'}}{{item}}
+    </p>
+    <script src="../angular-1.5.8/angular.js"></script>
+    <script>
+        var app = angular.module('app', []);
+        app.controller('mycontroller', function($scope) {
+            $scope.arr = [1, 2, 3, 4, 5]
+            $scope.isCange = true;
+        })
+    </script>
+</body>
+
+</html>

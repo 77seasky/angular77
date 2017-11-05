@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<!-- 3创建页面 View -->
+
+<body ng-app="app" ng-controller="myController">
+    <!-- 4.写页面 -->
+    <input type="number" ng-model="num1"> +
+    <input type="number" ng-model="num2">
+    <input type="button" value="=" ng-click="add()">
+    <p>{{num3}}</p>
+    <!-- 1.引用angular -->
+    <script src="../angular-1.5.8/angular.js"></script>
+    <!-- 2.创建angular 模块 Controller -->
+    <script>
+        //angular.module创建模块
+        // 参数1 模块名字  参数2 空数组
+        // module.contoller 创建控制器（controller）
+        angular.module("app", [])
+            .controller('myController', function($log, $scope) {
+                // 通过依赖注入的方式传递参数
+                // $开头的都称作服务scope服务，$都是angular的官方服务，这个服务名称是不能修改的
+                // angular中的服务 ：
+                // 1.是由外部传递过来的
+                // 2.名字不能修改
+                // 3.传递过来的参数可以修改
+                // $log ===console  $window ===window
+                console.log($scope)
+                $log.log(123)
+                    // 参数的初始化
+                $scope.num1 = 10
+                $scope.num2 = 20
+                $scope.num3 = 30;
+                // 给= 绑定事件
+                $scope.add = function() {
+                    $scope.num3 = $scope.num1 + $scope.num2;
+                }
+
+            })
+    </script>
+</body>
+
+</html>

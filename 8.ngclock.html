@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        [ng-cloak] {
+            display: none;
+        }
+    </style>
+</head>
+<!-- 
+    出现闪一闪的问题根本在于浏览器在使用过程中还没有解析到angular的时候，将{{}}
+    做成字符串处理，如果后面angular在解析完成以后才会处理表达式中的内容将{{}}删除
+
+    1. 如果使用表达式会出现闪一闪{{}}问题 这时改成使用ng-bind的方式
+    2. 在ng-app 后面添加ng-cloak 同时添加样式[ng-cloak]{display:none}将当前的页面隐藏起来，等到angular执行完成以后将ng-cloak去除，
+    那么表达式也同时会被处理，所以表达式的括号也不会显示出来也就没有闪一闪的问题
+-->
+
+<body ng-app="app" ng-controller="mycontroller" ng-cloak="">
+    <p>{{text}}</p>
+    <!-- <p ng-bind="text"></p> -->
+    <script src="../angular-1.5.8/angular.js"></script>
+    <script>
+        var app = angular.module('app', []);
+        app.controller('mycontroller', function($scope) {
+            $scope.text = '二狗'
+        })
+    </script>
+</body>
+
+</html>

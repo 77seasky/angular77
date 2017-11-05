@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body ng-app="app" ng-controller="mycontroller">
+    <input type="checkbox" ng-model="isShow">{{isShow}}
+    <!--
+             显示隐藏 
+             ngshow/nghide 通过样式来进行隐藏  show和hide显示是相反的 show是true的时候显示，那么hide就是隐藏
+             ngif 通过注释dom元素 来控制显示和隐藏 会删除dom元素（会重新计算dom排列，性能损耗多一点）
+        -->
+    <p ng-if="isShow">ng-if:{{isShow}}</p>
+    <p ng-show="isShow">ng-show:{{isShow}}</p>
+    <p ng-hide="isShow">ng-hide:{{isShow}}</p>
+
+    <script src="../angular-1.5.8/angular.js"></script>
+    <script>
+        var app = angular.module('app', []);
+        app.controller('mycontroller', function($scope) {
+            $scope.isShow = true;
+        })
+    </script>
+</body>
+
+</html>

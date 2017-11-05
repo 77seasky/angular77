@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<!-- 2.app指令确定angular的管理范围和启动angular -->
+<!-- init指令初始化 -->
+
+<body ng-app ng-init="num1=0;num2=0;num3=0">
+    <input type="number" ng-model="num1"> -
+    <input type="number" ng-model="num2">
+    <!-- 绑定事件click指令 ===onclick事件 -->
+    <input type="button" ng-click="num3=num1-num2" value="=">
+    <p>{{num3}}</p>
+    <!-- 1.引用angular -->
+    <script src="../angular-1.5.8/angular.js"></script>
+</body>
+
+</html>
